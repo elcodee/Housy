@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Signin from "./modal/Signin"
 import Signup from "./modal/Signup"
-import { useState } from "react"
 
 
 const Navigation = () => {
@@ -12,9 +11,9 @@ const Navigation = () => {
       <>
          <nav className="navbar navbar-expand-lg navbar-light bg-white">
             <div className="container-fluid ">
-               <Link to="/">
+               <a href="/">
                   <img src={Logo} alt="housy" className="d-lg-inline-flex navImgCustom" />
-               </Link>
+               </a>
                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                </button>

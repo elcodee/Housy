@@ -5,18 +5,17 @@ import house4 from "../common/img/house/h4.svg";
 import house5 from "../common/img/house/h5.svg";
 import house6 from "../common/img/house/h6.svg";
 import house7 from "../common/img/house/h7.svg";
-import house8 from "../common/img/house/h8.svg";
-import house9 from "../common/img/house/h9.svg";
 
 const houseData = [
 	{
 		id: 1,
 		detail: {
+			rent: "year",
 			thumb: house1,
 			amenities: "Furnished",
 			bedroom: 3,
 			bathroom: 2,
-			price_year: 9000000,
+			price: 9000000,
 			area: "1,800",
 			location: "Jakarta Utara",
 		},
@@ -24,11 +23,12 @@ const houseData = [
 	{
 		id: 2,
 		detail: {
+			rent: "year",
 			thumb: house2,
 			amenities: "Furnished",
 			bedroom: 1,
 			bathroom: 1,
-			price_year: 3000000,
+			price: 3000000,
 			area: "800",
 			location: "Jakarta Timur",
 		},
@@ -36,11 +36,12 @@ const houseData = [
 	{
 		id: 3,
 		detail: {
+			rent: "year",
 			thumb: house3,
 			amenities: "Furnished",
-			bedroom: 4,
+			bedroom: 3,
 			bathroom: 2,
-			price_year: 8000000,
+			price: 8000000,
 			area: "2,100",
 			location: "Jakarta Timur",
 		},
@@ -48,11 +49,12 @@ const houseData = [
 	{
 		id: 4,
 		detail: {
+			rent: "month",
 			thumb: house4,
 			amenities: "Shared Accomodation",
 			bedroom: 4,
 			bathroom: 3,
-			price_year: 13000000,
+			price: 13000000,
 			area: "2,200",
 			location: "Jakarta Utara",
 		},
@@ -60,11 +62,12 @@ const houseData = [
 	{
 		id: 5,
 		detail: {
+			rent: "month",
 			thumb: house5,
 			amenities: "Shared Accomodation",
 			bedroom: 2,
 			bathroom: 2,
-			price_year: 5500000,
+			price: 5500000,
 			area: "1,900",
 			location: "Jakarta Barat",
 		},
@@ -72,11 +75,12 @@ const houseData = [
 	{
 		id: 5,
 		detail: {
+			rent: "month",
 			thumb: house5,
 			amenities: "Pet Allowed",
 			bedroom: 3,
 			bathroom: 2,
-			price_year: 3000000,
+			price: 3000000,
 			area: "1,800",
 			location: "Jakarta Selatan",
 		},
@@ -84,11 +88,12 @@ const houseData = [
 	{
 		id: 6,
 		detail: {
+			rent: "month",
 			thumb: house6,
 			amenities: "Pet Allowed",
 			bedroom: 1,
 			bathroom: 1,
-			price_year: 3500000,
+			price: 3500000,
 			area: "810",
 			location: "Jakarta Selatan",
 		},
@@ -96,11 +101,12 @@ const houseData = [
 	{
 		id: 7,
 		detail: {
+			rent: "day",
 			thumb: house7,
 			amenities: "Shared Accomodation",
 			bedroom: 2,
 			bathroom: 1,
-			price_year: 5000000,
+			price: 5000000,
 			area: "1,200",
 			location: "Jakarta Timur",
 		},

@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
-import { houseContext } from '../context/Filter';
+import { HouseContext } from '../context/Filter'
+import fakeData from '../data/dummy'
 
 const SidebarComp = () => {
-   const house = useContext(houseContext);
+   // Import Global State from context
+   const fltr = useContext(HouseContext);
 
    // Type Of Rent
+   const [rent, setRent] = useState('year');
    const tors = [
       { name: 'Day', value: 'day' },
       { name: 'Month', value: 'month' },
@@ -14,6 +17,7 @@ const SidebarComp = () => {
    ]
 
    // Bedroom
+   const [bedroom, setbedroom] = useState(3);
    const bedrooms = [
       { name: 'oneBed', value: 1 },
       { name: 'twoBed', value: 2 },
@@ -23,7 +27,7 @@ const SidebarComp = () => {
    ]
 
    // Bathroom
-   const [bathroom, setBathroom] = useState();
+   const [bathroom, setBathroom] = useState(2);
    const bathrooms = [
       { name: 'oneBath', value: 1 },
       { name: 'twoBath', value: 2 },
@@ -31,34 +35,32 @@ const SidebarComp = () => {
       { name: 'fourBath', value: 4 },
       { name: 'fiveBath', value: 5 },
    ]
-   const handleBathroom = (e) => {
-      setBathroom(e.target.value)
-   }
 
    // Amenitie
-   const [amenitie, setAminitie] = useState();
+   const [amenitie, setAmenitie] = useState('Furnished');
    const amenities = [
       { name: 'Furnished' },
       { name: 'Pet Allowed' },
       { name: 'Shared Accomodation' },
    ]
-   const handleAmenitie = (e) => {
-      setAminitie(e.target.value)
-   }
 
    // Budget
-   const [budget, setBudget] = useState(0);
+   const [budget, setBudget] = useState(null);
 
-   const handleBudget = (e) => {
-      setBudget(e.target.value)
+   // Handle APPLY Filter
+   const handleApply = () => {
+      console.log("click");
+
+      fltr.filteredData(
+         fakeData.filter(house => (
+            house.detail.rent === rent &&
+            house.detail.bedroom === bedroom &&
+            house.detail.bathroom === bathroom &&
+            house.detail.price <= budget
+         ))
+      )
    }
 
-   console.log("Context: ", house);
-   // console.log("Type Of Rent: ", tor);
-   // console.log("Bedrooms: ", bedroom);
-   // console.log("Bathroom: ", bathroom);
-   // console.log("Amenities: ", amenitie);
-   // console.log("Budget: ", budget);
    return (
       <div className="container rowSidebar">
          <div className="row mb-4">
@@ -68,7 +70,7 @@ const SidebarComp = () => {
             {tors.map(tor => {
                return (
                   <div className="col-md-4 buttonRadioCustom">
-                     <input type="radio" onChange={house.filterRent} value={tor.value} id={tor.name} checked={house.rent == tor.value} />
+                     <input type="radio" onChange={() => setRent(tor.value)} value={tor.value} id={tor.name} checked={rent == tor.value} />
                      <label for={tor.name}>{tor.name}</label>
                   </div>
                )
@@ -98,7 +100,7 @@ const SidebarComp = () => {
                {bedrooms.map(bdrm => {
                   return (
                      <div className="buttonRadioCustomProperty" >
-                        <input type="radio" onChange={house.filterBedroom} value={bdrm.value} id={bdrm.name} checked={house.bedroom == bdrm.value} />
+                        <input type="radio" onChange={() => setbedroom(bdrm.value)} value={bdrm.value} id={bdrm.name} checked={bedroom == bdrm.value} />
                         <label for={bdrm.name}>{bdrm.value}</label>
                      </div>
                   )
@@ -112,7 +114,7 @@ const SidebarComp = () => {
                {bathrooms.map(bthrm => {
                   return (
                      <div className="buttonRadioCustomProperty">
-                        <input type="radio" onChange={house.filterBathroom} value={bthrm.value} id={bthrm.name} checked={house.bathroom == bthrm.value} />
+                        <input type="radio" onChange={() => setBathroom(bthrm.value)} value={bthrm.value} id={bthrm.name} checked={bathroom == bthrm.value} />
                         <label for={bthrm.name}>{bthrm.value}</label>
                      </div>
                   )
@@ -128,7 +130,7 @@ const SidebarComp = () => {
                return (
                   <div className="col-12">
                      <div class="form-check">
-                        <input className="form-check-input" type="checkbox" onChange={house.filterAmenities} value={amnt.name} id={amnt.name} />
+                        <input className="form-check-input" type="checkbox" onChange={() => setAmenitie(amnt.name)} value={amnt.name} id={amnt.name} />
                         <label className="form-check-label" for={amnt.name}>
                            {amnt.name}
                         </label>
@@ -148,12 +150,12 @@ const SidebarComp = () => {
                      <label for="budget" className="col-md-form-label">Less than IDR.</label>
                   </div>
                   <div className="col-md-8">
-                     <input type="number" onChange={house.filterBudget} id="budget" className="form-control" value={house.budget} />
+                     <input type="number" onChange={(e) => setBudget(parseInt(e.target.value))} id="budget" className="form-control" value={budget} />
                   </div>
                </div>
             </div>
             <div className="col-md-12">
-               <button type="button" className="btn btn-primary fw-bolder float-end btnApply">APPLY</button>
+               <button type="button" onClick={handleApply} className="btn btn-primary fw-bolder float-end btnApply">APPLY</button>
             </div>
          </div>
 

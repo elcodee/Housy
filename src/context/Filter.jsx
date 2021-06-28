@@ -1,39 +1,20 @@
 import React, { createContext, useState } from 'react'
+import fakeData from '../data/dummy'
 
-export const houseContext = createContext();
+export const HouseContext = createContext();
 
 const HouseData = props => {
-   const [rent, setRent] = useState(null);
-   const [bedroom, setBedroom] = useState(null);
-   const [bathroom, setBathroom] = useState(null);
-   const [amenities, setAmenities] = useState(null);
-   const [budget, setBudget] = useState(null);
+   const [houses, setHouses] = useState(fakeData);
+   console.log(houses);
 
-   const filterRent = e => {
-      setRent(e.target.value);
+   const filteredData = (data) => {
+      setHouses(data)
    }
-
-   const filterBedroom = e => {
-      setBedroom(e.target.value);
-   }
-
-   const filterBathroom = e => {
-      setBathroom(e.target.value);
-   }
-
-   const filterAmenities = e => {
-      setAmenities(e.target.value);
-   }
-
-   const filterBudget = e => {
-      setBudget(e.target.value);
-   }
-
 
    return (
-      <houseContext.Provider value={{ rent, bedroom, bathroom, amenities, budget, filterRent, filterBedroom, filterBathroom, filterAmenities, filterBudget }}>
+      <HouseContext.Provider value={{ houses, filteredData }}>
          {props.children}
-      </houseContext.Provider>
+      </HouseContext.Provider>
    )
 }
 

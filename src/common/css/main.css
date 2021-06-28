@@ -123,3 +123,28 @@
 	border-radius: 6px;
 	color: rgb(0, 0, 0);
 }
+
+/* Custom Sign Card */
+.signinCustom {
+	width: 80%;
+	margin-left: 3rem;
+	box-shadow: black;
+}
+.signupCustom {
+	width: 80%;
+	margin-left: 3rem;
+	box-shadow: black;
+}
+
+/* Custom Profile */
+.cardProfile {
+	width: 80%;
+	margin-left: 8rem;
+}
+.imgCustomProfile {
+	width: 80%;
+}
+.profileBtnCustom {
+	width: 22rem;
+	margin-top: 10px;
+}
